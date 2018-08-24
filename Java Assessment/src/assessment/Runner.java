@@ -6,7 +6,7 @@ public class Runner {
 		Player player = new Player();
 		Map map = new Map();
 		
-		map.runGame(player);
+		map.runGame(player, 2);
 		
 	}
 
