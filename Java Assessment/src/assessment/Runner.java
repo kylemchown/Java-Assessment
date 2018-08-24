@@ -15,7 +15,7 @@ public class Runner {
 		Player player = new Player(100, 10);
 		Map map = new Map();
 		
-		map.runGame(player, 2);
+		map.runGame(player);
 		
 	}
 

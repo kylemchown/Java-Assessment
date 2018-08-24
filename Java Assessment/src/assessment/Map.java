@@ -17,10 +17,16 @@ public class Map {
 	
 	}
 	
-	public void runGame(Player player, int keys) {
+	public void runGame(Player player) {
 		this.player = player;
-		locationx = ThreadLocalRandom.current().nextInt(-5, 5 + 1);
-		locationy = ThreadLocalRandom.current().nextInt(-5, 5 + 1);
+		System.out.println("How many keys do you want there to be?");
+		int keys = Integer.parseInt(s.nextLine());
+		System.out.println("From the centre, how many spaces in each cardinal direction do you want objects to spawn?");
+		int size = Integer.parseInt(s.nextLine());
+		System.out.println("From 1 being least often and 100 being most, how often should monsters spawn?");
+		int encounter = Integer.parseInt(s.nextLine());
+		locationx = ThreadLocalRandom.current().nextInt(-size, size + 1);
+		locationy = ThreadLocalRandom.current().nextInt(-size, size + 1);
 		ArrayList<Key> keyList = new ArrayList<Key>();
 		for(int i = 0; i < keys; i++) {
 			keyList.add(new Key(ThreadLocalRandom.current().nextInt(-5, 5 + 1), ThreadLocalRandom.current().nextInt(-5, 5 + 1)));
@@ -40,7 +46,7 @@ public class Map {
 				System.out.println("Enter a direction");
 				String direction = s.nextLine();
 				move(direction);
-				if (ThreadLocalRandom.current().nextInt(0, 101) < 11) {
+				if (ThreadLocalRandom.current().nextInt(1, 101) < encounter) {
 					fight(player);
 				}
 				System.out.println("The large hand points to " + distance() + "m");
