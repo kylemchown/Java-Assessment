@@ -39,6 +39,9 @@ public class Map {
 				System.out.println("Enter a direction");
 				String direction = s.nextLine();
 				move(direction);
+				if (ThreadLocalRandom.current().nextInt(0, 101) < 11) {
+					fight(player);
+				}
 				System.out.println("The large hand points to " + distance() + "m");
 				keyCheck(keyList);
 				for (Key i : keyList) {
@@ -108,5 +111,10 @@ public class Map {
 				}
 			}
 		}
+	}
+
+	public void fight(Player player) {
+		Monster monster = new Monster(50, 5);
+		monster.fight(player);
 	}
 }

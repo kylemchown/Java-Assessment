@@ -1,10 +1,11 @@
 package assessment;
 
-public class Player {
+public class Player extends Fighter {
 	private int xcoord;
 	private int ycoord;
 	
-	Player(){
+	Player(int hp, int atk){
+		super(hp, atk);
 		this.xcoord = 0;
 		this.ycoord = 0;
 	}
