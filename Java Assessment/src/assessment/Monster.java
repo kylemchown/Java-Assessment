@@ -13,7 +13,8 @@ public class Monster extends Fighter {
 		System.out.println("A Monster Appears");
 		int turn = 0;
 		while (player.getHp() > 0 && this.getHp() > 0) {
-			System.out.println("Choose a command: Fight / Guard");
+			System.out.println("Select commands by using the assosciated number");
+			System.out.println("Choose a command: (1) Fight / (2) Guard");
 			String action = s.nextLine();
 			int monatk = ThreadLocalRandom.current().nextInt((int)(this.getAtk() - ((int) this.getAtk() * 0.25)), (int) (this.getAtk() + ((int) this.getAtk() * 0.25)));
 			int plaatk = ThreadLocalRandom.current().nextInt((int)(player.getAtk() - ((int) player.getAtk() * 0.25)), (int) (player.getAtk() + ((int) player.getAtk() * 0.25)));
@@ -21,20 +22,20 @@ public class Monster extends Fighter {
 			if (turn % 3 == 0) {
 				monatk = monatk * 3;
 			}
-			if (action.equals("Fight") || action.equals("fight")) {
+			switch (action){
+			case "1":
 				System.out.println("You deal " + plaatk + " damage");
 				this.setHp(this.getHp() - plaatk);
 				System.out.println("The monster is on " + this.getHp() + " hp");
-			}
-			else if (action.equals("Guard") || action.equals("guard")) {
+				break;
+			case"2":
 				System.out.println("You defend yourself");
 				monatk = monatk / 2;
-			}
-			else {
+				break;
+			default:
 				System.out.println("Please enter a valid command");
 				continue;
 			}
-			
 			System.out.println("The Monster hits for " + monatk + " damage");
 			player.setHp(player.getHp() - monatk);
 			System.out.println("You are on " + player.getHp() + " hp");
