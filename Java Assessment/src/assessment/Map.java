@@ -48,7 +48,8 @@ public class Map {
 				String direction = s.nextLine();
 				move(direction);
 				if (ThreadLocalRandom.current().nextInt(1, 101) < encounter) {
-					fight(player);
+					System.out.println("A Monster Appears");
+					fight(player, 50, 3);
 				}
 				System.out.println("Th hand labeled 'Exit' points to " + distance() + "m");
 				keyCheck(keyList);
@@ -68,8 +69,10 @@ public class Map {
 			}
 
 		}
-		System.out.println("After stumbling through the mist you finally reach the exit.");
-		System.out.println("Congratulations");
+		System.out.println("As you use the keys a large monster appears!");
+		fight(player, 75, 7);
+		System.out.println("Having defeated the monster standing in your way, you finally exit the swamp.");
+		System.out.println("Congratulations!");
 	}
 	
 	
@@ -93,10 +96,6 @@ public class Map {
 	}
 	
 	public double distance() {
-		/*int x = Math.abs(locationx - player.getXcoord());
-		int y = Math.abs(locationy - player.getYcoord());
-		int dist = x + y;
-		System.out.println("You are "+ dist + " spaces away");*/
 		double x = Math.abs(locationx - player.getXcoord())*Math.abs(locationx - player.getXcoord());
 		double y = Math.abs(locationy - player.getYcoord())*Math.abs(locationy - player.getYcoord());
 		double dist = Math.sqrt(x + y);
@@ -121,8 +120,8 @@ public class Map {
 		}
 	}
 
-	public void fight(Player player) {
-		Monster monster = new Monster(50, 5);
+	public void fight(Player player, int hp, int atk) {
+		Monster monster = new Monster(hp, atk);
 		monster.fight(player);
 	}
 

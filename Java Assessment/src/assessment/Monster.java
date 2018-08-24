@@ -11,7 +11,6 @@ public class Monster extends Fighter {
 	Scanner s = new Scanner(System.in);
 	
 	public void fight(Player player) {
-		System.out.println("A Monster Appears");
 		int turn = 0;
 		int flee = 0;
 		System.out.println("Select commands by using the assosciated number");
@@ -54,12 +53,12 @@ public class Monster extends Fighter {
 				this.setHp(0);
 			}
 		}
-		if (this.getHp() <= 0) {
-			System.out.println("You beat the monster! (or ran away, which is kind of like winning since it means you didn't die)");
-		}
-		else {
+		if (player.getHp() <= 0) {
 			System.out.println("You died :( . Maybe try again?");
 			System.exit(0);
+		}
+		else {
+			System.out.println("You beat the monster! (Or ran away)");
 		}
 	}
 }
