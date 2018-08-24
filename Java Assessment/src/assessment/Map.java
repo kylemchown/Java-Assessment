@@ -51,7 +51,7 @@ public class Map {
 					System.out.println("A Monster Appears");
 					fight(player, 50, 3);
 				}
-				System.out.println("Th hand labeled 'Exit' points to " + distance() + "m");
+				System.out.println("The hand labeled 'Exit' points to " + distance() + "m");
 				keyCheck(keyList);
 				for (Key i : keyList) {
 					if (i.isObtained() == false) {
