@@ -14,8 +14,9 @@ public class Map {
 
 	
 	Map(){
+		
+		}
 	
-	}
 	
 	public void runGame(Player player) {
 		this.player = player;
@@ -32,11 +33,11 @@ public class Map {
 			keyList.add(new Key(ThreadLocalRandom.current().nextInt(-5, 5 + 1), ThreadLocalRandom.current().nextInt(-5, 5 + 1)));
 		}
 		
-		System.out.println("You're in a swamp. It sucks, as all swamps do");
+		System.out.println("You're in a swamp. It sucks, as all swamps do, and you can barely see through the mist.");
 		System.out.println("Fortunately, you have a compass. Unfortunately, it's pointing in several directions.");
-		System.out.println("The large hand points to " + distance() + "m");
+		System.out.println("The hand labeled 'Exit' points to " + distance() + "m");
 		for (Key i : keyList) {
-			System.out.println("A small hand points to " + keyDist(i)+ "m");
+			System.out.println("A hand labeled 'Key' points to " + keyDist(i)+ "m");
 		}
 		System.out.println("Use commands like 'North', 'N' or 'n' to move");
 		
@@ -49,11 +50,11 @@ public class Map {
 				if (ThreadLocalRandom.current().nextInt(1, 101) < encounter) {
 					fight(player);
 				}
-				System.out.println("The large hand points to " + distance() + "m");
+				System.out.println("Th hand labeled 'Exit' points to " + distance() + "m");
 				keyCheck(keyList);
 				for (Key i : keyList) {
 					if (i.isObtained() == false) {
-						System.out.println("A small hand points to " + keyDist(i)+ "m");
+						System.out.println("A hand labeled 'Key' points to " + keyDist(i)+ "m");
 					}
 				}
 				if (locationx == player.getXcoord() && locationy == player.getYcoord()) {
@@ -124,4 +125,6 @@ public class Map {
 		Monster monster = new Monster(50, 5);
 		monster.fight(player);
 	}
+
+	
 }

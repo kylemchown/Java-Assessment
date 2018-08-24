@@ -26,5 +26,4 @@ public abstract class Fighter {
 		this.atk = atk;
 	}
 	
-	
 }
