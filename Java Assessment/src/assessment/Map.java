@@ -4,6 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.ArrayList;
 
 
+
 public class Map {
 	private int locationx;
 	private int locationy;

@@ -1,6 +1,7 @@
 package assessment;
 
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Monster extends Fighter {
 	
@@ -10,13 +11,19 @@ public class Monster extends Fighter {
 	Scanner s = new Scanner(System.in);
 	public void fight(Player player) {
 		System.out.println("A Monster Appears");
+		int turn = 0;
 		while (player.getHp() > 0 && this.getHp() > 0) {
 			System.out.println("Choose a command: Fight / Guard");
 			String action = s.nextLine();
-			int monatk = this.getAtk();
+			int monatk = ThreadLocalRandom.current().nextInt((int)(this.getAtk() - ((int) this.getAtk() * 0.25)), (int) (this.getAtk() + ((int) this.getAtk() * 0.25)));
+			int plaatk = ThreadLocalRandom.current().nextInt((int)(player.getAtk() - ((int) player.getAtk() * 0.25)), (int) (player.getAtk() + ((int) player.getAtk() * 0.25)));
+			turn++;
+			if (turn % 3 == 0) {
+				monatk = monatk * 3;
+			}
 			if (action.equals("Fight") || action.equals("fight")) {
-				System.out.println("You deal " + player.getAtk() + " damage");
-				this.setHp(this.getHp() - player.getAtk());
+				System.out.println("You deal " + plaatk + " damage");
+				this.setHp(this.getHp() - plaatk);
 				System.out.println("The monster is on " + this.getHp() + " hp");
 			}
 			else if (action.equals("Guard") || action.equals("guard")) {
@@ -31,6 +38,10 @@ public class Monster extends Fighter {
 			System.out.println("The Monster hits for " + monatk + " damage");
 			player.setHp(player.getHp() - monatk);
 			System.out.println("You are on " + player.getHp() + " hp");
+			
+			if (turn % 3 == 2) {
+				System.out.println("The monster is gearing up for a strong attack");
+			}
 		}
 		if (this.getHp() <= 0) {
 			System.out.println("You beat the monster!");
